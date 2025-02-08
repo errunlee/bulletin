@@ -6,7 +6,7 @@ import { GuardianNewsResponse } from "@/types/response/guardiannews";
 export const fetchGuardianNews = async (
   url: string,
   query: string | null,
-  params?: Record<string, string | number | null>
+  params?: Record<string, string | number | null | undefined>
 ) => {
   const response = await fetch<GuardianNewsResponse>(
     `${ENDPOINTS.GUARDIAN}/${url}`,

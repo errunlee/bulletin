@@ -6,7 +6,7 @@ import { NYTimesResponse } from "@/types/response/newYorkTimes";
 export const fetchNyTimes = async (
   url: string,
   query: string | null,
-  params?: Record<string, string | number | null>
+  params?: Record<string, string | number | null | undefined>
 ) => {
   const response = await fetch<NYTimesResponse>(`${ENDPOINTS.NYTIMES}/${url}`, {
     q: query,

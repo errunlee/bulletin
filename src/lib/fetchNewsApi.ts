@@ -7,7 +7,7 @@ import { NewsArticle } from "@/types/newsArticle";
 export const fetchNewsApi = async (
   url: string,
   query: string | null,
-  params?: Record<string, string | number | null>
+  params?: Record<string, string | number | null | undefined>
 ): Promise<NewsArticle[]> => {
   const response = await fetch<NewsAPIResponse>(
     `${ENDPOINTS.NEWS_API}/${url}`,
