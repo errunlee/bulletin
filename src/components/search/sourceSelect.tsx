@@ -1,7 +1,7 @@
 import { SelectElement } from "../ui/select";
 
 const sources = [
-  { value: "NewsAPI", label: "NewsAPI" },
+  { value: "News API", label: "News API" },
   { value: "New York Times", label: "New York Times" },
   { value: "The Guardian", label: "The Guardian" },
 ];

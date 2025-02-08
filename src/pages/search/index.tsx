@@ -54,6 +54,8 @@ const Search = () => {
           ))}
         </div>
       )}
+
+      {!isLoading && data?.length === 0 && <p>No results found.</p>}
     </section>
   );
 };

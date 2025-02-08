@@ -1,10 +1,5 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Input } from "../ui/input";
-import { ChevronDown, Search } from "lucide-react";
-import { useEffect, useRef } from "react";
-import { useUrlParams } from "@/hooks/useUrlParams";
-import { Button } from "../ui/button";
-import SearchModal from "../search/searchModal";
+import { NavLink } from "react-router-dom";
+
 import SearchBar from "../search/searchbar";
 
 interface LinkTagProps {
@@ -38,7 +33,7 @@ const navItems = {
 const Navbar = () => {
   return (
     <nav className="bg-white shadow-md py-4 sticky top-0 z-50 mb-5 flex justify-between items-start md:items-center flex-col md:flex-row gap-3">
-      <ul className="flex gap-6 items-center max-w-6xl  px-4 ">
+      <ul className="flex flex-wrap gap-6 items-center max-w-6xl  px-4 ">
         {Object.entries(navItems).map(([title, href]) => (
           <li key={title}>
             <LinkTag href={href} title={title} />
