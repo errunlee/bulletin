@@ -6,7 +6,7 @@ const Header = () => {
         <h2 className="text-center font-bold">Stay Informed, Stay Ahead</h2>
       </div>
       <div className="flex">
-        <p className="text-xl">{new Date().toUTCString()}</p>
+        <p className="text-md md:text-xl">{new Date().toUTCString()}</p>
       </div>
     </div>
   );

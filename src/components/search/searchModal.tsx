@@ -69,7 +69,7 @@ export default function SearchModal() {
             <ChevronDown />
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className="max-w-fit">
+        <AlertDialogContent className="md:max-w-fit">
           <AlertDialogHeader>
             <AlertDialogTitle>Search news across the web</AlertDialogTitle>
             <AlertDialogDescription className="flex flex-col gap-3">

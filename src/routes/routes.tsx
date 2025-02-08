@@ -1,3 +1,4 @@
+import TopPicks from "@/components/homepage/toppicks";
 import Layout from "@/layout";
 import Category from "@/pages/categories";
 import ForYou from "@/pages/foryou";
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: "news",
-        element: <Outlet />,
+        element: (
+          <div className="flex">
+            <Outlet />
+          </div>
+        ),
         children: [
           {
             path: "search",

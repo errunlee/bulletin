@@ -40,7 +40,7 @@ const Preferences = () => {
     <div className="p-6">
       <PreferencesDialog savePreferences={setPreferences} />
 
-      <h2 className="text-2xl font-bold mb-4">For You</h2>
+      <h2 className="text-2xl font-bold mb-4">Based on your preferences</h2>
 
       {preferences.sources.length === 0 &&
         preferences.categories.length === 0 &&

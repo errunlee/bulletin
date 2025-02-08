@@ -1,9 +1,9 @@
 import { SelectElement } from "../ui/select";
 
 const sources = [
-  { value: "newsapi", label: "NewsAPI" },
-  { value: "nytimes", label: "New York Times" },
-  { value: "guardian", label: "The Guardian" },
+  { value: "NewsAPI", label: "NewsAPI" },
+  { value: "New York Times", label: "New York Times" },
+  { value: "The Guardian", label: "The Guardian" },
 ];
 type SourceProps = {
   handleSourceChange: (value: string) => void;

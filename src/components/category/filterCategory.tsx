@@ -1,5 +1,5 @@
 import { useUrlParams } from "@/hooks/useUrlParams";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
 
 import FilterBar from "../search/filterBar";
@@ -29,6 +29,7 @@ const FilterCategory = () => {
       setDate(value);
     }
   };
+
   return (
     <div className="flex gap-4">
       {/* <CategorySelect

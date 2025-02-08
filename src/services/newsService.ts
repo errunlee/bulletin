@@ -11,14 +11,18 @@ export const API_KEYS = {
 
 const fetchNewsByPreference = async (
   query: string | null,
-  preferredSources?: string[],
+  preferredSources: string[] | undefined = [
+    "News API",
+    "New York Times",
+    "The Guardian",
+  ],
   params?: Record<string, string | number | null>
 ): Promise<NewsArticle[]> => {
   try {
     const requests: Promise<NewsArticle[]>[] = [];
     // Conditionally fetch NewsAPI
     if (preferredSources?.includes("News API")) {
-      requests.push(fetchNewsApi("/everything", query, params));
+      requests.push(fetchNewsApi("everything", query, params));
     }
 
     // Conditionally fetch NYTimes
@@ -34,8 +38,12 @@ const fetchNewsByPreference = async (
     }
 
     // Fetch only selected sources
-    const results = await Promise.all(requests);
-    const mergedResults = results.flat(); // Flatten array
+    const results = await Promise.allSettled(requests);
+    const successfulResults = results
+      .filter((result) => result.status === "fulfilled")
+      .map((result) => result.value);
+
+    const mergedResults = successfulResults.flat(); // Flatten array
 
     // Remove duplicate articles based on URL
     const uniqueResults = Array.from(

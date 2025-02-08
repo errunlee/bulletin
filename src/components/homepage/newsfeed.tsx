@@ -1,12 +1,17 @@
-import { useGetNewsFromNewsApi } from "@/hooks/useGetNewsFromNewsApi";
 import NewsCard from "./newsCard";
-import { useGetAllNews } from "@/hooks/useGetAllNews";
-import useGetTopNews from "@/hooks/useNews";
+import useGetTopNews from "@/hooks/useGetTopNews";
 
 const NewsFeed = () => {
-  //   const { data } = useGetNewsFromNyTimes();
-  const { data } = useGetTopNews();
-  // const { data } = useGetAllNews("bitcoin");
+  const { data, isLoading, isError } = useGetTopNews();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    <p>Failed to get news.</p>;
+  }
+
   return (
     <section className="flex flex-col justify-start gap-3">
       {data?.map((item) => {
