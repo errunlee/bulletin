@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import fetchAllNews from "@/services/newsService";
+import { fetchNewsByPreference } from "@/services/newsService";
 import PreferencesDialog from "./Modal";
 import NewsCard from "../homepage/newsCard";
 
@@ -33,35 +33,23 @@ const Preferences = () => {
   // Fetch news for selected preferences
   const { data: articles, isLoading } = useQuery({
     queryKey: ["forYouNews", preferences],
-    queryFn: () => fetchAllNews(query, preferences.sources),
-    // enabled: query.length > 0,
+    queryFn: () => fetchNewsByPreference(query, preferences.sources),
+    enabled: query.length > 0 || preferences.sources.length > 0,
   });
-  debugger;
   return (
     <div className="p-6">
+      <PreferencesDialog savePreferences={setPreferences} />
+
       <h2 className="text-2xl font-bold mb-4">For You</h2>
 
       {preferences.sources.length === 0 &&
-      preferences.categories.length === 0 &&
-      preferences.authors.length === 0 ? (
-        <p>No preferences set. Please set them by clicking the button below.</p>
-      ) : (
-        <div className="mb-4">
-          <h4 className="font-semibold">Your Preferences</h4>
+        preferences.categories.length === 0 &&
+        preferences.authors.length === 0 && (
           <p>
-            <strong>Sources:</strong> {preferences.sources.join(", ") || "None"}
+            Select your favorite sources, categories, and authors using the
+            preferences button above to get customized news updates.
           </p>
-          <p>
-            <strong>Categories:</strong>{" "}
-            {preferences.categories.join(", ") || "None"}
-          </p>
-          <p>
-            <strong>Authors:</strong> {preferences.authors.join(", ") || "None"}
-          </p>
-        </div>
-      )}
-
-      <PreferencesDialog savePreferences={setPreferences} />
+        )}
 
       {isLoading && <p>Loading articles...</p>}
 

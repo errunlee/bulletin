@@ -9,7 +9,7 @@ export const API_KEYS = {
   GUARDIAN: import.meta.env.VITE_GUARDIAN_APIKEY,
 };
 
-const fetchAllNews = async (
+const fetchNewsByPreference = async (
   query: string | null,
   preferredSources?: string[],
   params?: Record<string, string | number | null>
@@ -23,14 +23,14 @@ const fetchAllNews = async (
 
     // Conditionally fetch NYTimes
     if (preferredSources?.includes("New York Times")) {
-      requests.push(fetchNyTimes(query, { nyTimes: API_KEYS.NYTIMES }, params));
+      requests.push(
+        fetchNyTimes("search/v2/articlesearch.json", query, params)
+      );
     }
 
     // Conditionally fetch Guardian
     if (preferredSources?.includes("The Guardian")) {
-      requests.push(
-        fetchGuardianNews(query, { GUARDIAN_API: API_KEYS.GUARDIAN }, params)
-      );
+      requests.push(fetchGuardianNews("search", query, params));
     }
 
     // Fetch only selected sources
@@ -52,4 +52,4 @@ const fetchAllNews = async (
   }
 };
 
-export default fetchAllNews;
+export { fetchNewsByPreference };
