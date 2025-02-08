@@ -32,7 +32,6 @@ const SearchBar = () => {
       <Input
         name="search"
         defaultValue={getParam("q")}
-        type="search"
         className="pl-8"
         placeholder="Search news..."
       />
