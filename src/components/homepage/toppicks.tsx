@@ -40,6 +40,7 @@ const TopPicks = () => {
                 </li>
               );
             })}
+            {data?.length == 0 && <p>Nothing found</p>}
           </ul>
         )}
       </div>

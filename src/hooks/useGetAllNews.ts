@@ -1,5 +1,5 @@
 import { fetchNewsByPreference } from "@/services/newsService";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 export const useGetAllNews = (
   search: string | null,
@@ -10,13 +10,14 @@ export const useGetAllNews = (
   if (preferredSource) {
     sources.push(preferredSource);
   }
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ["news", search, query, preferredSource],
-    queryFn: () =>
-      fetchNewsByPreference(
-        search,
-        preferredSource ? sources : undefined,
-        query
-      ),
+    queryFn: ({ pageParam = 1 }) =>
+      fetchNewsByPreference(search, preferredSource ? sources : undefined, {
+        ...query,
+        page: pageParam,
+      }),
+    initialPageParam: 1,
+    getNextPageParam: (_, pages) => pages.length + 1,
   });
 };
