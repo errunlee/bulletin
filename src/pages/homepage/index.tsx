@@ -6,7 +6,7 @@ const Homepage = () => {
   return (
     <div className=" ">
       <section className="md:grid lg:grid-cols-3 gap-3">
-        <div className="md:col-span-2">
+        <div className="lg:col-span-2">
           <NewsFeed />
         </div>
         <aside className="p-3">

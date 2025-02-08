@@ -23,11 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "news",
-        element: (
-          <div className="flex">
-            <Outlet />
-          </div>
-        ),
+        element: <Outlet />,
         children: [
           {
             path: "search",

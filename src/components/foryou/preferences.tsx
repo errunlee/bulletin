@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchNewsByPreference } from "@/services/newsService";
 import PreferencesDialog from "./Modal";
 import NewsCard from "../homepage/newsCard";
+import { CardSkeleton } from "@/skeletons/homepage";
 
 const Preferences = () => {
   const [preferences, setPreferences] = useState<{
@@ -51,14 +52,15 @@ const Preferences = () => {
           </p>
         )}
 
-      {isLoading && <p>Loading articles...</p>}
+      {isLoading && <CardSkeleton />}
 
       <div className="flex flex-col gap-4 mt-3">
-        {!isLoading && articles && articles?.length > 0
+        {articles && articles?.length > 0
           ? articles.map((article, index) => (
               <NewsCard article={article} key={index} />
             ))
-          : query.length > 0 && <p>No articles found for your preferences.</p>}
+          : query.length > 0 &&
+            !isLoading && <p>No articles found for your preferences.</p>}
       </div>
     </div>
   );

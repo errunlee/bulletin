@@ -1,3 +1,4 @@
+import { CardSkeleton } from "@/skeletons/homepage";
 import NewsCard from "./newsCard";
 import useGetTopNews from "@/hooks/useGetTopNews";
 
@@ -5,7 +6,7 @@ const NewsFeed = () => {
   const { data, isLoading, isError } = useGetTopNews();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <CardSkeleton />;
   }
 
   if (isError) {

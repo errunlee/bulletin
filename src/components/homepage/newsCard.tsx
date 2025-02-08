@@ -20,16 +20,16 @@ interface Props {
 
 const NewsCard = ({ article }: Props) => {
   return (
-    <article className="flex flex-col md:flex-row gap-3 bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden">
+    <article className="md:grid md:grid-cols-3 gap-3 bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden items-center">
       {/* News Image */}
       <img
         src={article.urlToImage}
         alt={article.title}
-        className="w-full md:max-w-[25rem]  h-60 object-cover"
+        className="w-full md:max-w-[15rem] lg:max-w-[25rem]  h-60 object-cover"
       />
 
       {/* News Content */}
-      <div className="p-5">
+      <div className="p-5 md:col-span-2">
         {/* Source & Author */}
         <p className="text-sm text-gray-500 dark:text-gray-400">
           {article.source.name} • {article.author}

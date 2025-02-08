@@ -4,6 +4,7 @@ import { useGetAllNews } from "@/hooks/useGetAllNews";
 import FilterBar from "@/components/search/filterBar";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
+import { CardSkeleton } from "@/skeletons/homepage";
 const Search = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
@@ -24,10 +25,15 @@ const Search = () => {
     setDate(date);
   };
 
-  const { data } = useGetAllNews(query, source, {
+  const { data, isLoading, isError } = useGetAllNews(query, source, {
     category,
     date: date ? date?.toString() : null,
   });
+
+  if (isError) {
+    return <div>Something went wrong</div>;
+  }
+
   return (
     <section>
       <h1>Search results for: {query}</h1>
@@ -39,11 +45,15 @@ const Search = () => {
         date={date}
         source={source ?? undefined}
       />
-      <div className="space-y-4 mt-4">
-        {data?.map((article) => (
-          <NewsCard article={article} key={article.url} />
-        ))}
-      </div>
+      {isLoading ? (
+        <CardSkeleton />
+      ) : (
+        <div className="space-y-4 mt-4">
+          {data?.map((article) => (
+            <NewsCard article={article} key={article.url} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
