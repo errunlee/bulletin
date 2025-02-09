@@ -1,11 +1,12 @@
 import { useUrlParams } from "@/hooks/useUrlParams";
 import { Search } from "lucide-react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Input } from "../ui/input";
 import SearchModal from "./searchModal";
 
 const SearchBar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   const nav = useNavigate();
@@ -38,7 +39,10 @@ const SearchBar = () => {
       <Search className="w-4 h-4 absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
       {location.pathname !== "/news/search" && (
         <div className="absolute right-2 top-1/2 -translate-y-1/2">
-          <SearchModal />
+          <SearchModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
         </div>
       )}
     </form>

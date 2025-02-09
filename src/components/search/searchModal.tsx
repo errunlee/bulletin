@@ -73,7 +73,7 @@ export default function SearchModal({
     <>
       <AlertDialog open={isModalOpen}>
         <AlertDialogTrigger asChild>
-          <Button variant="ghost">
+          <Button onClick={() => setIsModalOpen(true)} variant="ghost">
             <ChevronDown />
           </Button>
         </AlertDialogTrigger>
