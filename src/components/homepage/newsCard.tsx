@@ -1,5 +1,6 @@
 import { NewsArticle } from "@/types/newsArticle";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 export interface Article {
   source: {
     id: string | null;
@@ -22,11 +23,20 @@ const NewsCard = ({ article }: Props) => {
   return (
     <article className="md:grid md:grid-cols-3 gap-3 bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden items-center">
       {/* News Image */}
-      <img
+
+      <LazyLoadImage
+        alt={article.title}
+        src={article.urlToImage} // use normal <img> attributes as props
+        className="w-full md:max-w-[15rem] lg:max-w-[25rem]  h-60 object-cover"
+        effect="blur"
+      />
+
+      {/* <img
+        loading="lazy"
         src={article.urlToImage}
         alt={article.title}
         className="w-full md:max-w-[15rem] lg:max-w-[25rem]  h-60 object-cover"
-      />
+      /> */}
 
       {/* News Content */}
       <div className="p-5 md:col-span-2">
