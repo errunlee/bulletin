@@ -2,7 +2,7 @@ import { fetchGuardianNews } from "@/lib/fetchGuardianNews";
 import { fetchNewsApi } from "@/lib/fetchNewsApi";
 import { fetchNyTimes } from "@/lib/fetchNYTimes";
 import { NewsArticle } from "@/types/newsArticle";
-import { format, subDays } from "date-fns";
+import { format } from "date-fns";
 
 export const API_KEYS = {
   NEWS_API: import.meta.env.VITE_NEWSAPI_APIKEY,

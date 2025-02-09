@@ -1,5 +1,5 @@
 import { useUrlParams } from "@/hooks/useUrlParams";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { format } from "date-fns";
 
 import FilterBar from "../search/filterBar";
