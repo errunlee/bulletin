@@ -1,5 +1,5 @@
+import { SelectElement } from "@/components/ui/select";
 import useGetCategories from "@/hooks/useGetCategories";
-import { SelectElement } from "../ui/select";
 
 type CategoryProps = {
   handleCategoryChange: (value: string) => void;
