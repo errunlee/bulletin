@@ -90,7 +90,7 @@ export default function SearchModal({
                 source={source}
               />
 
-              <div className="relative">
+              <form onSubmit={handleSearch} className="relative">
                 <Input
                   ref={queryRef}
                   name="search"
@@ -101,7 +101,7 @@ export default function SearchModal({
                 />
 
                 <Search className="w-4 h-4 absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
-              </div>
+              </form>
               {error && (
                 <p className="text-destructive">Invalid search keywords</p>
               )}

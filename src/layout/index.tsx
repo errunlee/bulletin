@@ -10,9 +10,7 @@ const Layout = ({}: Props) => {
       <header className="px-5 md:px-10 lg:px-20 bg-gray-50">
         <Header />
       </header>
-      <nav>
-        <Navbar />
-      </nav>
+      <Navbar />
       <section className="px-5 md:px-10 lg:px-20">
         <Outlet />
       </section>

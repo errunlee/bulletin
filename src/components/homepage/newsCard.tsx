@@ -27,6 +27,7 @@ const NewsCard = ({ article }: Props) => {
       <LazyLoadImage
         alt={article.title}
         src={article.urlToImage} // use normal <img> attributes as props
+        wrapperClassName="w-full lg:w-auto"
         className="w-full md:max-w-[15rem] lg:max-w-[25rem]  h-60 object-cover"
         effect="blur"
       />

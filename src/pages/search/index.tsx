@@ -14,7 +14,9 @@ const Search = () => {
 
   const [category, setCategory] = useState(searchParams.get("category"));
   const [source, setSource] = useState(searchParams.get("source"));
-  const [date, setDate] = useState<Date>();
+  const [date, setDate] = useState<Date>(
+    searchParams.get("date") as unknown as Date
+  );
 
   const handleCategoryChange = (v: string) => {
     setCategory(v);
@@ -44,7 +46,6 @@ const Search = () => {
     console.log("error");
     return <div>Something went wrong</div>;
   }
-  debugger;
   return (
     <section className="mb-4">
       <h1>Search results for: {query}</h1>

@@ -25,7 +25,7 @@ const Category = () => {
 
   return (
     <div>
-      <p className=" text-lg my-2">Top results for {category}</p>
+      <p className=" text-lg my-2 underline">Top results for {category}</p>
       {isLoading ? (
         <CardSkeleton />
       ) : (

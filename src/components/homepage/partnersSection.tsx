@@ -1,30 +1,42 @@
-import { Link } from "react-router-dom";
-
 type Props = {};
 
 interface PartnerItemProps {
   name: string;
   iamgeSrc: string;
+  href: string;
 }
 
-const PartnerItem = ({ name, iamgeSrc }: PartnerItemProps) => {
+const PartnerItem = ({ name, iamgeSrc, href }: PartnerItemProps) => {
   return (
     <li>
-      <Link
-        to="/"
+      <a
+        href={href}
+        target="_blank"
         className="flex gap-4 px-1 py-2 items-center hover:shadow hover:text-blue-400 "
       >
         <img className="h-4 w-4" src={iamgeSrc} alt={`partner ${name}`} />
         <span>{name}</span>
-      </Link>
+      </a>
     </li>
   );
 };
 
 const partners: PartnerItemProps[] = [
-  { name: "NewsApi", iamgeSrc: "/newsapi_favicon.png" },
-  { name: "The NewYork Times", iamgeSrc: "/ny_times_favicon.ico" },
-  { name: "Guardian News", iamgeSrc: "/guardiannews_favicon.ico" },
+  {
+    name: "NewsApi",
+    iamgeSrc: "/newsapi_favicon.png",
+    href: "https://newsapi.org/",
+  },
+  {
+    name: "The NewYork Times",
+    iamgeSrc: "/ny_times_favicon.ico",
+    href: "https://www.nytimes.com/international/",
+  },
+  {
+    name: "Guardian News",
+    iamgeSrc: "/guardiannews_favicon.ico",
+    href: "https://www.theguardian.com/international",
+  },
 ];
 
 const PartnersSection = ({}: Props) => {
