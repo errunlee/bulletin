@@ -69,12 +69,12 @@ const fetchNewsByPreference = async (
     .filter((result) => result.status === "fulfilled")
     .map((result) => result.value);
 
-  const mergedResults = successfulResults.flat(); // Flatten array
-
+  const mergedResults = successfulResults.flat();
+  debugger;
   // Remove duplicate articles based on URL
   const uniqueResults = Array.from(
     new Map(mergedResults.map((article) => [article.url, article])).values()
-  );
+  ); // Flatten array
 
   // Sort by publication date
   return uniqueResults.sort((a, b) => {
