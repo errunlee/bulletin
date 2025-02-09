@@ -76,7 +76,6 @@ const PreferencesDialog = ({
           </AlertDialogDescription>
         </AlertDialogHeader>
 
-        {/* Select News Sources */}
         <div className="mb-4">
           <h4 className="font-semibold mb-2">Preferred News Sources</h4>
           <div className="flex flex-wrap gap-2">
@@ -99,7 +98,6 @@ const PreferencesDialog = ({
           </div>
         </div>
 
-        {/* Select Categories */}
         <div className="mb-4">
           <h4 className="font-semibold mb-2">Preferred Categories</h4>
           <div className="flex flex-wrap gap-2">
@@ -124,7 +122,6 @@ const PreferencesDialog = ({
           </div>
         </div>
 
-        {/* Select Authors */}
         <div className="mb-4">
           <h4 className="font-semibold mb-2">Preferred Authors</h4>
           <div className="flex flex-wrap gap-2">

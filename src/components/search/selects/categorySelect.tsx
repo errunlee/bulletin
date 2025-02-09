@@ -1,12 +1,5 @@
+import useGetCategories from "@/hooks/useGetCategories";
 import { SelectElement } from "../ui/select";
-
-const categories = [
-  { value: "business", label: "Business" },
-  { value: "entertainment", label: "Entertainment" },
-  { value: "technology", label: "Technology" },
-  { value: "sports", label: "Sports" },
-  { value: "science", label: "Science" },
-];
 
 type CategoryProps = {
   handleCategoryChange: (value: string) => void;
@@ -14,10 +7,15 @@ type CategoryProps = {
 };
 
 const CategorySelect = ({ handleCategoryChange, category }: CategoryProps) => {
+  const { data: categories } = useGetCategories();
   return (
     <SelectElement
       handleChange={handleCategoryChange}
-      data={categories}
+      data={
+        categories?.map((category) => {
+          return { label: category, value: category };
+        }) || []
+      }
       label="Select a category"
       value={category || ""}
       placeholder={!category ? "All categories" : ""}

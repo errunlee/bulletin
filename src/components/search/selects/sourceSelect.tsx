@@ -1,4 +1,4 @@
-import { SelectElement } from "../ui/select";
+import { SelectElement } from "../../ui/select";
 
 const sources = [
   { value: "News API", label: "News API" },

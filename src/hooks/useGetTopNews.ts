@@ -14,7 +14,10 @@ const fetchNews = async (pageParam: number) => {
   const succedResults = results.filter(
     (result) => result.status === "fulfilled"
   );
-  return succedResults.flatMap((result) => result.value);
+
+  return succedResults
+    .flatMap((result) => result.value)
+    .sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1));
 };
 
 export default function useGetTopNews() {

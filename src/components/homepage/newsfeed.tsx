@@ -19,7 +19,7 @@ const NewsFeed = () => {
   }
 
   if (isError) {
-    <p>Failed to get news.</p>;
+    <p>Something went wrong</p>;
   }
 
   return (

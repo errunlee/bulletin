@@ -6,15 +6,17 @@ type Props = {};
 
 const Layout = ({}: Props) => {
   return (
-    <div className="bg-secondary font-poppins">
-      <div className="px-5 md:px-10 lg:px-20  bg-gray-50">
+    <main className="bg-secondary font-poppins">
+      <header className="px-5 md:px-10 lg:px-20 bg-gray-50">
         <Header />
-      </div>
-      <Navbar />
-      <div className="px-5 md:px-10 lg:px-20">
+      </header>
+      <nav>
+        <Navbar />
+      </nav>
+      <section className="px-5 md:px-10 lg:px-20">
         <Outlet />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

@@ -3,6 +3,7 @@ import { fetchNyTimes } from "@/lib/fetchNYTimes";
 import { NewsArticle } from "@/types/newsArticle";
 import { useQuery } from "@tanstack/react-query";
 
+//Get top news articles from The Guardian and New York Times only because News API does not provide a way to fetch top news articles
 const fetchNews = async () => {
   const requests: Promise<NewsArticle[]>[] = [
     fetchGuardianNews("search", null, {

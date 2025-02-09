@@ -1,3 +1,4 @@
+//To work on the URL params
 export const useUrlParams = () => {
   const getParam = (param: string) => {
     const url = new URL(window.location.href);

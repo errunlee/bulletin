@@ -7,6 +7,7 @@ import { useState } from "react";
 import { CardSkeleton } from "@/skeletons/homepage";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
+import { format } from "date-fns";
 const Search = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
@@ -24,7 +25,7 @@ const Search = () => {
   };
 
   const handleDateChange = (date: Date | undefined) => {
-    setDate(date);
+    if (date) setDate(format(date, "yyyy-MM-dd") as unknown as Date);
   };
 
   const {

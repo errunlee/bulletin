@@ -4,8 +4,6 @@ import ForYou from "@/pages/foryou";
 import Homepage from "@/pages/homepage";
 import Search from "@/pages/search";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-// import Home from '../pages/Home';
-// import NotFound from '../pages/NotFound';
 
 const router = createBrowserRouter([
   {

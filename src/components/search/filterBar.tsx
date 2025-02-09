@@ -1,6 +1,6 @@
-import CategorySelect from "./categorySelect";
-import DateSelect from "./dateSelect";
-import SourceSelect from "./sourceSelect";
+import CategorySelect from "./selects/categorySelect";
+import DateSelect from "./selects/dateSelect";
+import SourceSelect from "./selects/sourceSelect";
 
 type Props = {
   handleCategoryChange: (value: string) => void;
