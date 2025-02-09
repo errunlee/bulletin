@@ -32,7 +32,7 @@ const navItems = {
 
 const Navbar = () => {
   return (
-    <nav className="bg-white shadow-md py-4 sticky top-0 z-50 mb-5 flex justify-between items-start md:items-center flex-col md:flex-row gap-3">
+    <nav className="bg-white shadow-md py-4 sticky top-0 z-50 mb-5 flex justify-between items-start md:items-center flex-col md:flex-row gap-3  px-10">
       <ul className="flex flex-wrap gap-6 items-center max-w-6xl  px-4 ">
         {Object.entries(navItems).map(([title, href]) => (
           <li key={title}>

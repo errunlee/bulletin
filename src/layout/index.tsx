@@ -9,8 +9,8 @@ const Layout = ({}: Props) => {
     <div className="bg-secondary font-poppins">
       <div className="px-5 md:px-10 lg:px-20  bg-gray-50">
         <Header />
-        <Navbar />
       </div>
+      <Navbar />
       <div className="px-5 md:px-10 lg:px-20">
         <Outlet />
       </div>
