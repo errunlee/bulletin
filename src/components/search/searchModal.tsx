@@ -17,7 +17,13 @@ import { format } from "date-fns";
 import { Input } from "../ui/input";
 import { useNavigate } from "react-router-dom";
 
-export default function SearchModal() {
+export default function SearchModal({
+  isModalOpen,
+  setIsModalOpen,
+}: {
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const [category, setCategory] = useState("");
   const [source, setSource] = useState("");
   const [date, setDate] = useState<Date>();
@@ -42,10 +48,11 @@ export default function SearchModal() {
     const url = new URL(`${window.location.origin}/news/search`);
 
     const query = queryRef?.current?.value;
-    if (query?.trim() && query.length > 2) {
+    if (query?.trim() && query.length > 3) {
       url.searchParams.set("q", query);
     } else {
       setError(true);
+      setIsModalOpen(true);
       return;
     }
     if (category) {
@@ -58,12 +65,13 @@ export default function SearchModal() {
     if (date) {
       url.searchParams.set("date", format(date, "yyyy-MM-dd"));
     }
+    setIsModalOpen(false);
     nav(`${url.pathname}${url.search}`);
   };
 
   return (
     <>
-      <AlertDialog>
+      <AlertDialog open={isModalOpen}>
         <AlertDialogTrigger asChild>
           <Button variant="ghost">
             <ChevronDown />
@@ -95,12 +103,14 @@ export default function SearchModal() {
                 <Search className="w-4 h-4 absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
               </div>
               {error && (
-                <p className="text-destructive">Enter at least 2 characters</p>
+                <p className="text-destructive">Invalid search keywords</p>
               )}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel onClick={() => setIsModalOpen(false)}>
+              Cancel
+            </AlertDialogCancel>
             <AlertDialogAction onClick={handleSearch}>Search</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
