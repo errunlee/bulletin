@@ -1,51 +1,54 @@
-# React + TypeScript + Vite
+# 📰 News Aggregator App (The Bulletin)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern news aggregator that fetches the latest articles from **NewsAPI, The Guardian, and The New York Times**, featuring **infinite scrolling** and **personalized news preferences**.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Fetches news from **multiple sources** (NewsAPI, NYTimes, Guardian).  
+✅ **Infinite Scrolling** with React Query.  
+✅ **Filter news** by categories, sources, and authors.  
+✅ **Responsive design** with TailwindCSS.  
+✅ **Personalized feed**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Installation & Setup
 
-- Configure the top-level `parserOptions` property like this:
+### 1️⃣ Clone the repository
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+git clone https://github.com/errunlee/bulletin.git
+cd bulletin
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📌 Dockerized Application
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+This application has been fully containerized with Docker, allowing you to run it in an isolated environment without needing to install dependencies manually.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+To get started, follow the instructions below to build and run the application using Docker or Docker Compose. 🚀
+
+## 🐳 Running with Docker Compose
+
+#### Navigate to the source directory containing the docker-compose.yml file, then run the following commands:
+
+### 1️⃣ Start the Application
+
 ```
-# bulletin
+docker-compose up --build
+```
+
+#### This will:
+
+##### 1. Build the app
+
+##### 2. Start the server on port 5173
+
+### 2️⃣ Stop the Application
+
+#### To stop the running container:
+
+```
+docker-compose down
+```
