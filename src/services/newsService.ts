@@ -45,9 +45,12 @@ const fetchNewsByPreference = async (
   if (preferredSources?.includes("New York Times")) {
     const nyTimesParams = {
       ...params,
+      fq: params?.category,
       begin_date: fromDate?.replace(/-/g, ""),
       end_date: fromDate ? today.replace(/-/g, "") : null,
+      category: params?.category,
     };
+    delete nyTimesParams.category;
     requests.push(
       fetchNyTimes("search/v2/articlesearch.json", query, nyTimesParams)
     );
@@ -57,9 +60,13 @@ const fetchNewsByPreference = async (
   if (preferredSources?.includes("The Guardian")) {
     const guardianParams = {
       ...params,
+      tag: params?.category,
       "from-date": fromDate,
       "to-date": fromDate ? today : null,
+      category: params?.category,
     };
+    delete guardianParams.category;
+
     requests.push(fetchGuardianNews("search", query, guardianParams));
   }
 
@@ -70,7 +77,6 @@ const fetchNewsByPreference = async (
     .map((result) => result.value);
 
   const mergedResults = successfulResults.flat();
-  debugger;
   // Remove duplicate articles based on URL
   const uniqueResults = Array.from(
     new Map(mergedResults.map((article) => [article.url, article])).values()

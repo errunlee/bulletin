@@ -19,9 +19,9 @@ export const fetchNyTimes = async (
     title: article.headline?.main || "No Title",
     description: article.abstract || "Click to read more",
     url: article.web_url,
-    urlToImage: article.multimedia?.[0]?.url
-      ? `https://www.nytimes.com/${article.multimedia[0].url}`
-      : "https://via.placeholder.com/150",
+    urlToImage:
+      article.multimedia?.[0]?.url &&
+      `https://www.nytimes.com/${article.multimedia[0].url}`,
     publishedAt: article.pub_date || new Date().toISOString(),
   }));
 };

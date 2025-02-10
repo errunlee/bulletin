@@ -24,7 +24,7 @@ export const fetchNewsApi = async (
     title: article.title || "No Title",
     description: article.description || "-",
     url: article.url,
-    urlToImage: article.urlToImage || "https://via.placeholder.com/150",
+    urlToImage: article.urlToImage,
     publishedAt: article.publishedAt || new Date().toISOString(),
   }));
 };

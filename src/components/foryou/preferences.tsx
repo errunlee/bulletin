@@ -34,7 +34,11 @@ const Preferences = () => {
   // Fetch news for selected preferences
   const { data: articles, isLoading } = useQuery({
     queryKey: ["forYouNews", preferences],
-    queryFn: () => fetchNewsByPreference(query, preferences.sources),
+    queryFn: () =>
+      fetchNewsByPreference(
+        query,
+        preferences.sources.length > 0 ? preferences.sources : undefined
+      ),
     enabled: query.length > 0 || preferences.sources.length > 0,
   });
   return (

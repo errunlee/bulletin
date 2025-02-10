@@ -23,7 +23,7 @@ export const fetchGuardianNews = async (
     title: article.fields?.headline,
     description: article.fields?.trailText,
     url: article.webUrl,
-    urlToImage: article.fields?.thumbnail || "https://via.placeholder.com/150",
+    urlToImage: article.fields?.thumbnail,
     publishedAt: article.webPublicationDate || new Date().toISOString(),
   }));
 };
