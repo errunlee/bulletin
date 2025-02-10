@@ -13,10 +13,14 @@ export const useGetAllNews = (
   return useInfiniteQuery({
     queryKey: ["news", search, query, preferredSource],
     queryFn: ({ pageParam = 1 }) =>
-      fetchNewsByPreference(search, preferredSource ? sources : undefined, {
-        ...query,
-        page: pageParam,
-      }),
+      fetchNewsByPreference(
+        search ? search : null,
+        preferredSource ? sources : undefined,
+        {
+          ...query,
+          page: pageParam,
+        }
+      ),
     initialPageParam: 1,
     getNextPageParam: (_, pages) => pages.length + 1,
   });
